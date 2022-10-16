@@ -1,3 +1,6 @@
+
+
+
 def readFiles_2(path):
     import pandas as pd
     from pandas import json_normalize
@@ -13,14 +16,6 @@ def readFiles_2(path):
                 data = json.load(f)
                 data = flatten_json(data)
                 data = json_normalize(data)
-                #for i in data:
-                    #if data[i].dtype == object:
-                        #print(i)
-                        #data[i] = data[i].str.replace(r'\D', '', regex=True)
-                        #data[i] = data[i].str.lstrip('0')
-                        #data[i] = data[i].str.replace(r'^\s*$', '0', regex=True)
-                        #data[i] = data[i].fillna(0)
-                        #data[i] = data[i].astype('category')
                 dfs.append(data)
                 counter += 1
                 print(counter)
@@ -29,8 +24,7 @@ def readFiles_2(path):
     df = pd.concat(dfs, sort=False)
     return df
 
-#Flatten .json files // forked from https://pypi.org/project/flatten-json/
-
+#Flatten .json files // forked from: "https://pypi.org/project/flatten-json/"
 def flatten_json(y):
     out = {}
 
@@ -73,7 +67,7 @@ def readFiles_threshold(path, threshold, key_list):
                     dfs.append(data)
                     counter += 1
                     print(counter)
-                    if counter == 50:
+                    if counter == 50: #this is a testing variable that can be commented out. The algorithm will then read all threshold values in the db for testing.
                         break
             except ValueError:
                 pass   

@@ -12,10 +12,10 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 
 #set filepath of .json- DB
-path = "/home/ubuntu/Visual_Studio/Aurora_Egineering_Challenge/tx_data_20220223/*"
+path = "/home/ubuntu/Visual_Studio/Aurora_Egineering_Challenge/tx_data_20220223/*" #tested on AWS with Ubuntu instance || replace with path to .json files
 
 #Initialize df
-new_df = readFiles_2(path)
+new_df = readFiles_2(path, 100)
 print(new_df)
 print(new_df.keys())
 print(new_df['result.block.height'])
@@ -118,7 +118,7 @@ from sklearn.linear_model import LinearRegression
 filter_list = X.loc[:, X.columns.str.startswith("result.receipts_outcome.")].keys()
 
 #choose first n entries in list | goal is to use the lowest number of features while maintaining highest accuracy
-n = 4
+n = 2
 if n == 0:
     filter_list = filter_list[0]
     X = X[['result.transaction_outcome.outcome.gas_burnt', filter_list]]
