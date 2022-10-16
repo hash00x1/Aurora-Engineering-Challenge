@@ -1,7 +1,7 @@
 
 
 
-def readFiles_2(path):
+def readFiles_2(path, sample_size):
     import pandas as pd
     from pandas import json_normalize
     import glob
@@ -10,7 +10,7 @@ def readFiles_2(path):
     dfs = []
     counter = 0
     #df = pd.DataFrame()
-    for file in files[0:10000]:
+    for file in files[0:sample_size]:
         with open(file) as f:
             try:
                 data = json.load(f)
