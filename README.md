@@ -5,6 +5,6 @@ The code features a Multilinear Regression Model as well as a Random Forest Regr
 
 The code has been written in Visual Studio and is optimized to run on an AWS t3a.xlarge or t3a.2xlarge instance (or similar).
 
-To test the model, adjust the "path"-parameter to your local copy of AURORA Challenge .json- training files and simply run the scripts. The code features no option to display graph-outputs in a non-IDE environment. This will need to be added.
+To test the model, adjust the "path"-parameter to your local copy of AURORA Challenge .json- training files and simply run the scripts. The code features no option to display graph-outputs in a non-IDE environment. This will need to be added in a future version.
 
 To observe the changing accuracy output between Linear Regression and Random Forest modelling, simply adjust the sample_size parameter for readFiles_2().
