@@ -133,7 +133,7 @@ X_copy = X
 #Initialize the multilinear regression model
 x_train, x_test, y_train, y_test = train_test_split(X, y, train_size= 0.8, test_size = 0.2)
 
-#Scale the training / testing data
+#Scale the training / testing data ##not relevant for this use-case. If utilized, it requires the scaling of future-added testing-vectors as well. To scale use e.g.: y_pred = sc.transform(testing_data)
 #from sklearn.preprocessing import RobustScaler
 #sc = RobustScaler() 
 #x_train = sc.fit_transform(x_train)
@@ -150,7 +150,7 @@ print(regr.score(x_test, y_test))
 #plot x_test/y-predict
 y_predict = regr.predict(x_test)
 
-plt.scatter(y_test, y_predict, alpha=0.4) #original and predicted values should be aligned
+plt.scatter(y_test, y_predict, alpha=0.4) #original and predicted values should be visually aligned in the output
 plt.xlabel("transaction_features")
 plt.ylabel("predicted_gasrate")
 plt.show()
@@ -180,7 +180,8 @@ print(len(test_df))
 print("Total Thresholds Found:" + str(counter))
 accuracy = counter / len(test_df)
 print("Model Accuracy 'Multilinear Regression' is {accuracy}".format(accuracy=accuracy))
-#test value t:: t = pd.concat([test_df, new[0:50]]) >> y_pred = regr.predict(t)
+
+#test model-reliability via testing-vector t || t contains threshold-values + a randomized sample of X values
 t = test_df
 t = pd.concat([t, X[0:50]]) 
 y_pred = regr.predict(t)
