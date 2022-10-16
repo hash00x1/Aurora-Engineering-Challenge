@@ -111,8 +111,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
 
-##Gas Price formula in Aurora Documentation states that total gas price T is bound to (base cost * gas price) at point t and (base cost * gas price) at t+1. Hence, gas price T is bound to relative change in T = x * delta(t, t+n). Where x is an unknown but constant variable and n are time-bound micro-changes in the machine-state between two blocks t and t+1.
-#>> filter receipts_outcome field to represent delta(t, t+n) only. URL: https://docs.near.org/concepts/basics/transactions/gas#:~:text=NEAR%20is%20configured%20with%20base%20costs.%20An%20example%3A
+##Gas Price formula in Aurora Documentation states that total gas price T is bound to (base cost * gas price) at point t and (base cost * gas price) at t+1. 
+#Hence, gas price T is bound to relative change in T = x * delta(t, t+n). Where x is an unknown but constant variable and n are time-bound micro-changes in the machine-state between two blocks t and t+1 
+#(as an example for state changes, s. e.g. receipts_outcome.metadata.gas_profile).
+#>> the following steps therefore filter "receipts_outcome" to represent learning-relevant features of delta(t, t+n) only. URL: https://docs.near.org/concepts/basics/transactions/gas#:~:text=NEAR%20is%20configured%20with%20base%20costs.%20An%20example%3A
 
 #create list of keys, by which to filter X
 filter_list = X.loc[:, X.columns.str.startswith("result.receipts_outcome.")].keys()
