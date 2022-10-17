@@ -4,7 +4,7 @@ import glob
 import json
 import pandas as pd
 import numpy as np
-from import_files_2 import readFiles_2
+from import_files_2 import readFiles
 from import_files_2 import flatten_json
 from import_files_2 import readFiles_threshold
 import matplotlib.pyplot as plt
@@ -15,12 +15,12 @@ from sklearn.model_selection import train_test_split
 path = "/home/ubuntu/Visual_Studio/Aurora_Egineering_Challenge/tx_data_20220223/*" #tested on AWS with Ubuntu instance || replace with path to .json files
 
 #Initialize df
-new_df = readFiles_2(path, sample_size=100)
+new_df = readFiles(path, sample_size=100)
 print(new_df)
 print(new_df.keys())
 print(new_df['result.block.height'])
 
-#remove all rows from new_df with more than 5% NaN Values // residue of NaN results from flatten_json- function in readFiles_2
+#remove all rows from new_df with more than 5% NaN Values // residue of NaN results from flatten_json- function in readFiles()
 percentage = 5
 min_count =  int(((100-percentage)/100)*new_df.shape[0] + 1)
 new_df = new_df.dropna(axis=1, thresh=min_count)
