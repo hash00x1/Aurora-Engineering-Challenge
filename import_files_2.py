@@ -1,7 +1,7 @@
 
 
 
-def readFiles_2(path, sample_size):
+def readFiles(path, sample_size):
     import pandas as pd
     from pandas import json_normalize
     import glob
